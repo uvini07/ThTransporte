@@ -1,3 +1,4 @@
+import type React from "react"
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import { useRef } from 'react'
 import { company, heroCopy, heroMedia } from '../../data/company.ts'
@@ -69,7 +70,8 @@ export function Hero() {
       ref={ref}
       id="inicio"
       aria-labelledby="hero-title"
-      className="relative isolate overflow-hidden [clip-path:polygon(0_0,100%_0,100%_calc(100%-5vw),0_100%)]"
+      style={{ "--color-ink": "#0a3a63", "--color-ice": "#ffffff", "--color-metal": "#c7d8e8", "--color-line": "#2b5a82", "--color-accent": "#5cc2ff" } as React.CSSProperties}
+      className="relative isolate overflow-hidden text-ice [&_a.text-white]:text-[#0a3a63] [clip-path:polygon(0_0,100%_0,100%_calc(100%-5vw),0_100%)]"
     >
       {/* Ambiente: a própria rodovia, desfocada e escurecida, preenche toda a tela */}
       <div aria-hidden className="absolute inset-0 -z-20">

@@ -5,8 +5,8 @@ import type { TeamData } from '../types/index.ts'
  * são os profissionais efetivamente livres para novos contratos. Não confunda os dois.
  */
 export const team: TeamData = {
-  totalMembers: null,
-  drivers: null,
+  totalMembers: 85,
+  drivers: 60,
   logisticsStaff: null,
   supportStaff: null,
   allocatedToContracts: null,

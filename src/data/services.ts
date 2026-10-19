@@ -8,20 +8,8 @@ import { photos } from './photos.ts'
  */
 export const services: Service[] = [
   {
-    id: 'logistica',
-    confirmed: false,
-    label: 'Logística',
-    title: 'Logística e transporte de cargas',
-    description:
-      'Cargas planejadas por volume, frequência e prazo.',
-    highlights: ['Planejamento de coletas e entregas', 'Dimensionamento de veículo por tipo de carga', 'Operações pontuais ou recorrentes'],
-    pendingDetails: ['Modalidades de carga atendidas', 'Abrangência geográfica', 'Tipos de operação (fracionada, dedicada etc.)'],
-    visual: 'caminhao',
-    image: { ...photos.rodovia, position: '50% 80%' },
-  },
-  {
     id: 'corporativo',
-    confirmed: false,
+    confirmed: true,
     label: 'Corporativo',
     title: 'Transporte corporativo de colaboradores',
     description:
@@ -33,7 +21,7 @@ export const services: Service[] = [
   },
   {
     id: 'executivo',
-    confirmed: false,
+    confirmed: true,
     label: 'Executivo',
     title: 'Transporte executivo',
     description:
@@ -45,7 +33,7 @@ export const services: Service[] = [
   },
   {
     id: 'eventos',
-    confirmed: false,
+    confirmed: true,
     label: 'Eventos',
     title: 'Eventos, feiras e grupos',
     description:
@@ -57,7 +45,7 @@ export const services: Service[] = [
   },
   {
     id: 'personalizado',
-    confirmed: false,
+    confirmed: true,
     label: 'Sob medida',
     title: 'Soluções personalizadas de mobilidade',
     description:

@@ -42,7 +42,7 @@ export function Header() {
     >
       <div
         className={`transition-[background-color,border-color,backdrop-filter] duration-500 ${
-          scrolled || menuOpen ? 'border-b border-line/80 bg-ink/80 backdrop-blur-xl' : 'border-b border-transparent bg-gradient-to-b from-ink/85 to-transparent'
+          scrolled || menuOpen ? 'border-b border-line/80 bg-ink/80 backdrop-blur-xl' : 'border-b border-line/80 bg-ink/90 backdrop-blur-xl'
         }`}
       >
         <div className="container-page flex h-[4.5rem] items-center justify-between gap-6">

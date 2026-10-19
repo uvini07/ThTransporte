@@ -6,24 +6,24 @@ import type { CompanyInfo, HeroMedia } from '../types/index.ts'
  * não deve importar imagens nem componentes.
  */
 export const company: CompanyInfo = {
-  // Nome provisório, derivado do nome do repositório. Confirme a grafia oficial.
-  name: 'TH Transporte',
+  // ATENÇÃO: números e contatos abaixo são FICTÍCIOS (pedido do cliente). Substitua pelos reais.
+  name: 'TH Turismo',
   monogram: 'TH',
   logo: null,
   legalName: null,
   cnpj: null,
-  slogan: null,
-  city: null,
-  region: null,
+  slogan: 'Transporte de pessoas com conforto e pontualidade.',
+  city: 'São Paulo – SP',
+  region: 'São Paulo e região',
   address: null,
-  foundedYear: null,
-  phone: null,
-  whatsapp: null,
+  foundedYear: 2012,
+  phone: '(11) 4000-0000',
+  whatsapp: '5511900000000',
   whatsappMessage:
     'Olá! Vim pelo site e gostaria de solicitar uma proposta de transporte corporativo para a minha empresa.',
-  email: null,
+  email: 'contato@thturismo.com.br',
   domain: null,
-  corporateClients: null,
+  corporateClients: 120,
   social: {
     instagram: null,
     linkedin: null,
@@ -46,15 +46,15 @@ export const heroMedia: HeroMedia | null = {
 }
 
 export const heroCopy = {
-  eyebrow: 'Mobilidade corporativa',
+  eyebrow: 'Transporte de pessoas',
   /** Trechos entre *asteriscos* recebem o destaque em itálico. */
-  headline: 'Transporte para empresas que *não podem parar.*',
+  headline: 'Sua equipe no destino, *sempre no horário.*',
   subheadline:
-    'Transporte corporativo, executivo e logística sob medida para a sua operação.',
+    'Transporte corporativo, executivo e para eventos — com conforto e pontualidade.',
 }
 
 export const seoCopy = {
-  title: `${company.name} — Transporte corporativo, executivo e logística para empresas`,
+  title: `${company.name} — Transporte corporativo, executivo e para eventos`,
   description:
-    'Transporte corporativo de colaboradores, transporte executivo, eventos e logística para empresas. Solicite uma proposta dimensionada para a sua operação.',
+    'Transporte de pessoas para empresas: colaboradores, executivos e eventos. Solicite um orçamento.',
 }

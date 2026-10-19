@@ -12,7 +12,7 @@ function seo(demo: boolean): Plugin {
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), 'VITE_')
-  const demo = env.VITE_DEMO_MODE !== 'false'
+  const demo = env.VITE_DEMO_MODE === 'true'
   return {
     plugins: [react(), tailwindcss(), seo(demo)],
     build: {

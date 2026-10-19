@@ -72,7 +72,7 @@ export interface HeroMedia {
   official: boolean
 }
 
-export type ServiceId = 'logistica' | 'corporativo' | 'executivo' | 'eventos' | 'personalizado'
+export type ServiceId = 'corporativo' | 'executivo' | 'eventos' | 'personalizado'
 
 export type VisualVariant =
   | 'sedan'

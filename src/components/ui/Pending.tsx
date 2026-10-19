@@ -46,7 +46,7 @@ const badgeText: Record<BadgeKind, string> = {
 
 /** Selo de status para conteúdo não confirmado. Só aparece no modo demonstração (exceto "ilustrativa"). */
 export function StatusBadge({ kind, tone = 'dark', className = '', label }: { kind: BadgeKind; tone?: Tone; className?: string; label?: string }) {
-  if (kind !== 'illustrative' && !isDemo) return null
+  if (!isDemo) return null
   const styles =
     kind === 'illustrative'
       ? tone === 'dark'
