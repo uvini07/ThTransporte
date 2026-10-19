@@ -48,7 +48,7 @@ export const heroMedia: HeroMedia | null = {
 export const heroCopy = {
   eyebrow: 'Mobilidade corporativa',
   /** Trechos entre *asteriscos* recebem o destaque em itálico. */
-  headline: 'Mobilidade inteligente para empresas que *não podem parar.*',
+  headline: 'Transporte para empresas que *não podem parar.*',
   subheadline:
     'Transporte corporativo, executivo e logística sob medida para a sua operação.',
 }

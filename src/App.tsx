@@ -5,12 +5,8 @@ import { Footer } from './components/layout/Footer.tsx'
 import { Header } from './components/layout/Header.tsx'
 import { PrivacyPolicy } from './components/layout/PrivacyPolicy.tsx'
 import { WhatsAppFloat } from './components/layout/WhatsAppFloat.tsx'
-import { About } from './components/sections/About.tsx'
-import { Clients } from './components/sections/Clients.tsx'
-import { Differentials } from './components/sections/Differentials.tsx'
 import { Fleet } from './components/sections/Fleet.tsx'
 import { Hero } from './components/sections/Hero.tsx'
-import { Operations } from './components/sections/Operations.tsx'
 import { Process } from './components/sections/Process.tsx'
 import { Services } from './components/sections/Services.tsx'
 import { Marquee } from './components/ui/Marquee.tsx'
@@ -37,10 +33,6 @@ export default function App() {
         <Marquee />
         {show.servicos && <Services />}
         {show.frota && <Fleet />}
-        {show.estrutura && <Operations />}
-        {show.diferenciais && <Differentials />}
-        <About />
-        {show.clientes && <Clients />}
         <Process />
         <Suspense fallback={<section id="contato" aria-label="Contato" className="min-h-[70rem] lg:min-h-[56rem]" />}>
           <Contact />

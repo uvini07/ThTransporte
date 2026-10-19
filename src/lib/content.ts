@@ -57,9 +57,7 @@ export const navItems = (
     { id: 'inicio', label: 'Início' },
     { id: 'servicos', label: 'Serviços' },
     { id: 'frota', label: 'Nossa frota' },
-    { id: 'estrutura', label: 'Estrutura' },
-    { id: 'clientes', label: 'Clientes' },
-    { id: 'sobre', label: 'Sobre nós' },
+    { id: 'processo', label: 'Como funciona' },
     { id: 'contato', label: 'Contato' },
   ] satisfies { id: SectionId; label: string }[]
 ).filter((item) => sectionVisibility[item.id])
@@ -123,7 +121,7 @@ export function pendingItems(): { group: string; items: string[] }[] {
   return groups
 }
 
-const numberedSections: SectionId[] = ['servicos', 'frota', 'estrutura', 'diferenciais', 'sobre', 'clientes', 'processo', 'contato']
+const numberedSections: SectionId[] = ['servicos', 'frota', 'processo', 'contato']
 
 /** Numeração editorial (01, 02…) calculada sobre as seções visíveis, sem lacunas. */
 export const sectionNumber = (id: SectionId) =>

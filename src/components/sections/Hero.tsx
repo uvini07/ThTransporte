@@ -73,8 +73,8 @@ export function Hero() {
     >
       {/* Ambiente: a própria rodovia, desfocada e escurecida, preenche toda a tela */}
       <div aria-hidden className="absolute inset-0 -z-20">
-        {heroMedia?.blurSrc && <img src={heroMedia.blurSrc} alt="" className="size-full scale-110 object-cover opacity-60" />}
-        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/90 to-ink/40" />
+        {heroMedia?.blurSrc && <img src={heroMedia.blurSrc} alt="" className="size-full scale-110 object-cover opacity-0" />}
+        <div className="absolute inset-0 bg-ink" />
         <div className="absolute inset-0 bg-grid opacity-40 [mask-image:linear-gradient(90deg,black,transparent_70%)]" />
         <div className="noise absolute inset-0 opacity-[0.07] mix-blend-overlay" />
       </div>
@@ -148,7 +148,7 @@ export function Hero() {
             {heroCopy.subheadline}
           </motion.p>
           <motion.div {...enter(1.1)} className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href="#contato">Solicitar proposta corporativa</ButtonLink>
+            <ButtonLink href="#contato">Pedir orçamento grátis</ButtonLink>
             <ButtonLink href="#frota" variant="secondary">
               Conheça nossa frota
             </ButtonLink>

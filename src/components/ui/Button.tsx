@@ -11,14 +11,14 @@ const base =
   'group relative isolate inline-flex min-h-12 items-center justify-center gap-2.5 px-6 text-[0.95rem] font-semibold tracking-tight transition-[color,transform] duration-300 ease-out-quint active:scale-[0.98] disabled:pointer-events-none disabled:opacity-60'
 
 const text: Record<Variant, string> = {
-  primary: 'text-ink',
+  primary: 'text-white',
   secondary: 'text-ice',
   secondaryLight: 'text-ink',
   ghost: 'px-0 text-ice hover:text-accent',
 }
 
 const plate: Record<Variant, string> = {
-  primary: 'bg-accent group-hover:bg-[#5cbcf0]',
+  primary: 'bg-accent group-hover:bg-[#0a6eae]',
   secondary: 'bg-ice/[0.08] group-hover:bg-ice/[0.15]',
   secondaryLight: 'bg-ink/[0.07] group-hover:bg-ink/[0.13]',
   ghost: 'hidden',

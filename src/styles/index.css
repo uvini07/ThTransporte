@@ -9,18 +9,18 @@
   --font-display: 'Archivo Variable', 'Archivo', 'Manrope Variable', ui-sans-serif, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  --color-ink: #0b1118;
-  --color-graphite: #101419;
-  --color-graphite-2: #161c23;
-  --color-line: #232b35;
-  --color-ice: #f5f7fa;
+  --color-ink: #ffffff;
+  --color-graphite: #f3f5f8;
+  --color-graphite-2: #e9edf2;
+  --color-line: #e2e7ed;
+  --color-ice: #0b1118;
   --color-ice-2: #e9edf2;
-  --color-metal: #aab4c0;
+  --color-metal: #5b6673;
   --color-slate: #4a5563;
-  --color-accent: #36a9e8;
+  --color-accent: #0b7fc7;
   --color-accent-strong: #0e6fa8;
   --color-accent-soft: #36a9e81f;
-  --color-warn: #f0b44c;
+  --color-warn: #a86a0c;
 
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
 
@@ -61,7 +61,7 @@
     scroll-behavior: smooth;
     scroll-padding-top: 5.5rem;
     -webkit-text-size-adjust: 100%;
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   body {
@@ -125,7 +125,7 @@
   /* Texto vazado, usado em números gigantes decorativos. */
   .text-outline {
     color: transparent;
-    -webkit-text-stroke: 1px rgb(170 180 192 / 0.22);
+    -webkit-text-stroke: 1px rgb(11 17 24 / 0.12);
   }
 
   .theme-light .text-outline {

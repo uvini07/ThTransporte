@@ -28,10 +28,10 @@ export function LightPanel({
   const clipPathRounded = useTransform(slant, (v) => `polygon(0 ${v}vw, 100% 0, 100% calc(100% - 5vw), 0 100%)`)
 
   return (
-    <section ref={ref} id={id} aria-labelledby={labelledBy} className={`theme-light relative ${className}`}>
+    <section ref={ref} id={id} aria-labelledby={labelledBy} className={`relative ${className}`}>
       <motion.div
         style={{ clipPath: rounded ? clipPathRounded : clipPath }}
-        className={`bg-ice pt-[5vw] text-ink [color-scheme:light] ${rounded ? 'pb-[5vw]' : ''}`}
+        className={`bg-graphite pt-[5vw] text-ice ${rounded ? 'pb-[5vw]' : ''}`}
       >
         {children}
       </motion.div>
