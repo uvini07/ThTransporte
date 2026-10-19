@@ -67,10 +67,10 @@ function Panels() {
                 badgeClassName="top-6 right-12"
               />
             </div>
-            <div aria-hidden className={`absolute inset-0 transition-colors duration-700 ${open ? 'bg-transparent' : 'bg-ink/40'}`} />
+            <div aria-hidden className={`absolute inset-0 transition-colors duration-700 ${open ? 'bg-transparent' : 'bg-[#0e1a2b]/35'}`} />
             <div
               aria-hidden
-              className={`absolute inset-0 bg-gradient-to-t from-ink via-ink/85 via-55% to-ink/20 transition-opacity duration-700 ${open ? 'opacity-100' : 'opacity-0'}`}
+              className={`absolute inset-0 bg-gradient-to-t from-[#0e1a2b]/95 via-[#0e1a2b]/60 via-50% to-transparent transition-opacity duration-700 ${open ? 'opacity-100' : 'opacity-0'}`}
             />
 
             {/* Gatilho acessível: expande o painel */}
@@ -80,7 +80,7 @@ function Panels() {
             {/* O botão permanece montado (o foco não se perde); quando aberto, encolhe para o canto. */}
             <button
               type="button"
-              className={`group absolute z-20 flex flex-col items-center text-left ${open ? 'top-0 left-0 p-8 xl:p-10' : 'inset-0 justify-between py-8'}`}
+              className={`group absolute z-20 flex flex-col items-center text-left [--color-ice:#ffffff] [--color-accent:#ff7a3d] ${open ? 'top-0 left-0 p-8 xl:p-10' : 'inset-0 justify-between py-8'}`}
               aria-expanded={open}
               aria-controls={`svc-body-${service.id}`}
               onFocus={() => setActive(i)}
@@ -102,7 +102,7 @@ function Panels() {
               {open && (
                 <motion.div
                   id={`svc-body-${service.id}`}
-                  className="absolute inset-x-0 bottom-0 z-10 p-10 xl:p-12"
+                  className="absolute inset-x-0 bottom-0 z-10 p-10 text-ice xl:p-12 [--color-ice:#ffffff] [--color-metal:#d3d9e1] [--color-accent:#ff7a3d]"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0, transition: { duration: 0.6, ease: ease.out, delay: 0.25 } }}
                   exit={{ opacity: 0, transition: { duration: 0.15 } }}

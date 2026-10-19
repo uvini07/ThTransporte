@@ -54,17 +54,17 @@ function FleetCard({ category, index, onOpen }: { category: FleetCategory; index
               badgeClassName="top-4 left-4"
             />
           </motion.div>
-          <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
+          <div aria-hidden className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-[#0e1a2b]/95 via-[#0e1a2b]/55 to-transparent" />
           {/* Faixa de acento que corre na base no hover */}
           <span aria-hidden className="absolute bottom-0 left-0 h-1 w-full origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out-quint group-hover:scale-x-100" />
 
-          <div className="absolute inset-x-0 bottom-0 flex flex-col gap-4 p-6">
+          <div className="absolute inset-x-0 bottom-0 flex flex-col gap-4 p-6 [--color-ice:#ffffff] [--color-metal:#d3d9e1] [--color-accent:#ff7a3d] text-ice">
             <div className="flex items-center gap-3">
               <span className="eyebrow tabular text-metal">{String(index + 1).padStart(2, '0')}</span>
               <span className="eyebrow text-accent">{groupLabel[category.group]}</span>
             </div>
             <h3 className="display text-xl leading-[1.05]">{category.name}</h3>
-            <div className="flex flex-wrap items-end justify-between gap-3 border-t border-ice/15 pt-4">
+            <div className="flex flex-wrap items-end justify-between gap-3 border-t border-white/20 pt-4">
               <Quantity value={category.quantity} className="display text-2xl" />
               <span className="flex items-center gap-2">
                 {!category.confirmed && <StatusBadge kind="confirm" />}
