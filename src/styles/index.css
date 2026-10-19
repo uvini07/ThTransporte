@@ -1,0 +1,132 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------
+   Tokens da marca. Ajuste aqui as cores ao logotipo real.
+   ------------------------------------------------------------------ */
+@theme {
+  --font-sans: 'Manrope Variable', 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-ink: #0b1118;
+  --color-graphite: #101419;
+  --color-graphite-2: #161c23;
+  --color-line: #232b35;
+  --color-ice: #f5f7fa;
+  --color-ice-2: #e9edf2;
+  --color-metal: #aab4c0;
+  --color-slate: #4a5563;
+  --color-accent: #36a9e8;
+  --color-accent-strong: #0e6fa8;
+  --color-accent-soft: #36a9e81f;
+  --color-warn: #f0b44c;
+
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-streak: streak 3.2s linear infinite;
+  --animate-pulse-ring: pulse-ring 2.8s var(--ease-out-quint) infinite;
+  --animate-scroll-cue: scroll-cue 2s var(--ease-out-quint) infinite;
+  --animate-marquee: marquee 40s linear infinite;
+
+  @keyframes streak {
+    from { transform: translateX(-120%); }
+    to { transform: translateX(520%); }
+  }
+  @keyframes pulse-ring {
+    0% { transform: scale(0.6); opacity: 0.7; }
+    100% { transform: scale(2.4); opacity: 0; }
+  }
+  @keyframes scroll-cue {
+    0% { transform: translateY(-100%); }
+    60%, 100% { transform: translateY(220%); }
+  }
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-ink font-sans text-ice antialiased;
+    font-feature-settings: 'ss01', 'cv11';
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  .theme-light :focus-visible {
+    outline-color: var(--color-accent-strong);
+  }
+
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-[90rem] px-5 sm:px-8 lg:px-12;
+  }
+
+  .eyebrow {
+    @apply font-mono text-[0.72rem] font-medium tracking-[0.18em] uppercase;
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Grade técnica usada como textura de fundo */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgb(170 180 192 / 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(170 180 192 / 0.07) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .theme-light .bg-grid {
+    background-image:
+      linear-gradient(to right, rgb(16 20 25 / 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(16 20 25 / 0.06) 1px, transparent 1px);
+  }
+
+  .noise {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.5'/></svg>");
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
