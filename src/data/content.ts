@@ -8,7 +8,7 @@ import type { AboutContent, ProcessStep } from '../types/index.ts'
 export const about: AboutContent = {
   reviewed: false,
   statement:
-    'Mais do que transportar pessoas e cargas, nosso propósito é manter negócios em movimento. Planejamos cada operação para conectar pessoas, reduzir complexidades e oferecer mobilidade alinhada à necessidade de cada empresa.',
+    'Nosso propósito é manter negócios em movimento — com planejamento, segurança e pontualidade em cada viagem.',
   blocks: [
     {
       question: 'Quem somos',

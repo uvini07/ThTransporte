@@ -8,7 +8,7 @@ import { SectionHeading } from '../ui/SectionHeading.tsx'
 
 function Placeholder({ label, className = '' }: { label: string; className?: string }) {
   return (
-    <div className={`flex flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-line p-6 text-center text-sm text-metal ${className}`}>
+    <div className={`chamfer chamfer-lg flex flex-col items-center justify-center gap-3 bg-graphite p-6 text-center text-sm text-metal ${className}`}>
       {label}
       <Pending label="Aguardando dados autorizados" />
     </div>
@@ -21,7 +21,7 @@ function Logos() {
     return (
       <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6" aria-label="Espaços para logotipos de clientes">
         {Array.from({ length: 6 }, (_, i) => (
-          <li key={i} className="grid aspect-[3/2] place-items-center rounded-2xl border border-dashed border-line font-mono text-xs tracking-wider text-metal/70 uppercase">
+          <li key={i} className="chamfer chamfer-sm grid aspect-[3/2] place-items-center bg-graphite font-mono text-xs tracking-wider text-metal/70 uppercase">
             Logo {i + 1}
           </li>
         ))}
@@ -34,7 +34,7 @@ function Logos() {
     <div className={`relative overflow-hidden ${loop ? '[mask-image:linear-gradient(90deg,transparent,black_12%,black_88%,transparent)]' : ''}`}>
       <ul className={`flex w-max items-center gap-6 ${loop ? 'animate-marquee hover:[animation-play-state:paused]' : 'flex-wrap'}`} aria-label="Clientes">
         {[...authorizedLogos, ...(loop ? authorizedLogos : [])].map((logo, i) => (
-          <li key={`${logo.name}-${i}`} aria-hidden={i >= authorizedLogos.length || undefined} className="grid h-24 w-44 place-items-center rounded-2xl border border-line bg-graphite px-6">
+          <li key={`${logo.name}-${i}`} aria-hidden={i >= authorizedLogos.length || undefined} className="chamfer chamfer-sm grid h-24 w-44 place-items-center bg-graphite px-6">
             <img
               src={logo.logo}
               alt={logo.name}
@@ -57,7 +57,7 @@ export function Clients() {
           id="clientes-title"
           index={sectionNumber('clientes')}
           eyebrow="Clientes e credibilidade"
-          title="Confiança construída operação a operação."
+          title="Quem *confia.*"
           intro={
             clients.relationshipHighlight ??
             'Clientes, depoimentos e certificações são publicados somente com autorização e comprovação.'
@@ -72,7 +72,7 @@ export function Clients() {
           {authorizedTestimonials.length > 0
             ? authorizedTestimonials.map((t, i) => (
                 <Reveal key={t.author} delay={i * 0.08}>
-                  <figure className="flex h-full flex-col rounded-[1.5rem] border border-line bg-graphite p-7">
+                  <figure className="chamfer chamfer-lg flex h-full flex-col bg-graphite p-7">
                     <Quote className="size-6 text-accent" aria-hidden />
                     <blockquote className="mt-5 flex-1 text-lg leading-relaxed">“{t.quote}”</blockquote>
                     <figcaption className="mt-6 border-t border-line pt-5 text-sm">
@@ -93,7 +93,7 @@ export function Clients() {
           {authorizedCases.length > 0
             ? authorizedCases.map((c, i) => (
                 <Reveal key={c.title} delay={i * 0.08}>
-                  <article className="flex h-full flex-col rounded-[1.5rem] border border-line bg-graphite p-7">
+                  <article className="chamfer chamfer-lg flex h-full flex-col bg-graphite p-7">
                     <p className="eyebrow text-accent">Estudo de caso · {c.client}</p>
                     <h3 className="mt-4 text-xl font-semibold">{c.title}</h3>
                     <p className="mt-3 flex-1 text-metal">{c.summary}</p>
@@ -109,7 +109,7 @@ export function Clients() {
 
           {(clients.certifications.length > 0 || isDemo) && (
             <Reveal delay={0.16}>
-              <div className="h-full rounded-[1.5rem] border border-line bg-graphite p-7">
+              <div className="chamfer chamfer-lg h-full bg-graphite p-7">
                 <p className="eyebrow mb-5 flex items-center gap-2 text-metal">
                   <Award className="size-4 text-accent" aria-hidden /> Certificações e licenças
                 </p>
@@ -138,7 +138,7 @@ export function Clients() {
             <span className="eyebrow mr-2 text-metal">Segmentos atendidos</span>
             {segments.length ? (
               segments.map((s) => (
-                <span key={s} className="rounded-full border border-line px-4 py-2 text-sm">
+                <span key={s} className="chamfer chamfer-sm bg-ice/[0.07] px-4 py-2 text-sm">
                   {s}
                 </span>
               ))

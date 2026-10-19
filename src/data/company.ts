@@ -33,14 +33,24 @@ export const company: CompanyInfo = {
   brandColors: null,
 }
 
-/** Foto ou vídeo oficial para o hero. Ex.: { type: 'video', src: '/media/hero.mp4', poster: '/media/hero.webp', alt: '...' } */
-export const heroMedia: HeroMedia | null = null
+/**
+ * Fundo da tela principal. Para vídeo: { type: 'video', src: '/media/hero.mp4', poster: '/media/hero.webp', alt, official }.
+ * (Os caminhos ficam aqui, sem importar photos.ts, porque este arquivo também é lido no build de SEO.)
+ */
+export const heroMedia: HeroMedia | null = {
+  type: 'image',
+  src: '/media/rodovia-533.webp',
+  blurSrc: '/media/rodovia-blur.webp',
+  alt: 'Vista aérea de uma rodovia ao entardecer com faixas de luz dos veículos',
+  official: false,
+}
 
 export const heroCopy = {
-  eyebrow: 'Transporte corporativo · Executivo · Logística',
-  headline: 'Mobilidade inteligente para empresas que não podem parar.',
+  eyebrow: 'Mobilidade corporativa',
+  /** Trechos entre *asteriscos* recebem o destaque em itálico. */
+  headline: 'Mobilidade inteligente para empresas que *não podem parar.*',
   subheadline:
-    'Conectamos pessoas, operações e negócios com soluções de transporte e logística planejadas para a realidade da sua empresa.',
+    'Transporte corporativo, executivo e logística sob medida para a sua operação.',
 }
 
 export const seoCopy = {

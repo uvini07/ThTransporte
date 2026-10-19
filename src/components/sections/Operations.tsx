@@ -30,7 +30,7 @@ function CapacityBar() {
   const pct = hasBoth ? (available / (allocated + available)) * 100 : 0
 
   return (
-    <Reveal className="rounded-[1.5rem] border border-ink/10 bg-white p-6 sm:p-8 lg:col-span-12">
+    <Reveal className="chamfer chamfer-lg bg-white p-6 sm:p-8 lg:col-span-12">
       <div className="flex flex-wrap items-end justify-between gap-6">
         <div>
           <p className="eyebrow mb-2 text-accent-strong">Disponibilidade para novos contratos</p>
@@ -51,7 +51,7 @@ function CapacityBar() {
           </div>
         </dl>
       </div>
-      <div className="mt-8 h-3 overflow-hidden rounded-full bg-ice-2" role="img" aria-label={hasBoth ? `${Math.round(pct)}% da equipe disponível para novos contratos` : 'Distribuição da equipe a informar'}>
+      <div className="mt-8 h-3 overflow-hidden bg-ice-2 [transform:skewX(-20deg)]" role="img" aria-label={hasBoth ? `${Math.round(pct)}% da equipe disponível para novos contratos` : 'Distribuição da equipe a informar'}>
         {hasBoth ? (
           <motion.div
             className="flex h-full origin-left"
@@ -80,8 +80,8 @@ export function Operations() {
           index={sectionNumber('estrutura')}
           eyebrow="Estrutura operacional"
           tone="light"
-          title="Gente preparada por trás de cada quilômetro."
-          intro="Capacidade não é só frota. É equipe dimensionada, processos claros e coordenação para manter cada contrato funcionando como combinado."
+          title="Estrutura para *operar.*"
+          intro="Equipe e capacidade dimensionadas para cada contrato."
         />
 
         <div className="mt-16 grid gap-5 lg:grid-cols-12">
@@ -90,20 +90,20 @@ export function Operations() {
               <Reveal
                 key={item.label}
                 delay={i * 0.06}
-                className={`flex min-h-44 flex-col justify-between rounded-[1.5rem] p-6 sm:p-8 ${item.primary ? 'bg-ink text-ice' : 'border border-ink/10 bg-white'}`}
+                className={`chamfer chamfer-lg flex min-h-44 flex-col justify-between p-6 sm:p-8 ${item.primary ? 'bg-ink text-ice' : 'bg-white'}`}
               >
                 <dt>
                   <span className={`eyebrow ${item.primary ? 'text-accent' : 'text-accent-strong'}`}>{item.label}</span>
                   <span className={`mt-2 block text-sm ${item.primary ? 'text-metal' : 'text-slate'}`}>{item.hint}</span>
                 </dt>
-                <dd className="mt-6 text-[clamp(2.5rem,5vw,4rem)] leading-none font-semibold tracking-[-0.04em]">
+                <dd className="display mt-6 text-[clamp(2rem,3.5vw,3rem)] leading-none">
                   {item.value !== null ? <Counter value={item.value} /> : <Pending tone={item.primary ? 'dark' : 'light'} />}
                 </dd>
               </Reveal>
             ))}
           </dl>
 
-          <Reveal delay={0.2} className="flex flex-col rounded-[1.5rem] border border-ink/10 bg-white p-6 sm:p-8 lg:col-span-4">
+          <Reveal delay={0.2} className="chamfer chamfer-lg flex flex-col bg-white p-6 sm:p-8 lg:col-span-4">
             <dl className="divide-y divide-ink/10">
               {facts.map((f) => (
                 <div key={f.label} className="py-5 first:pt-0 last:pb-0">

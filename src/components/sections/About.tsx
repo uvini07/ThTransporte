@@ -23,7 +23,7 @@ function Statement() {
   const reduce = useReducedMotion()
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.85', 'end 0.45'] })
   const words = about.statement.split(' ')
-  const className = 'text-[clamp(1.75rem,3.6vw,3.4rem)] leading-[1.14] font-semibold tracking-[-0.03em]'
+  const className = 'display text-[clamp(1.4rem,2.4vw,2.2rem)] leading-[1.2]'
 
   if (reduce)
     return (
@@ -47,7 +47,7 @@ function Statement() {
 
 export function About() {
   return (
-    <section id="sobre" aria-labelledby="sobre-title" className="relative overflow-hidden py-24 sm:py-36">
+    <section id="sobre" aria-labelledby="sobre-title" className="relative overflow-hidden py-20 sm:py-28">
       <div aria-hidden className="pointer-events-none absolute -bottom-40 -left-40 h-[36rem] w-[36rem] rounded-full bg-[radial-gradient(closest-side,rgb(54_169_232/0.1),transparent)]" />
       <div className="container-page relative">
         <Reveal className="eyebrow mb-10 flex flex-wrap items-center gap-3 text-accent">
@@ -57,30 +57,20 @@ export function About() {
           {!about.reviewed && <StatusBadge kind="draft" />}
         </Reveal>
 
-        <div className="max-w-5xl">
+        <div className="max-w-4xl">
           <Statement />
         </div>
 
-        <div className="mt-20 grid gap-px overflow-hidden rounded-[1.5rem] border border-line bg-line sm:grid-cols-2">
-          {about.blocks.map((b, i) => (
-            <Reveal key={b.question} delay={(i % 2) * 0.08} className="bg-ink p-7 sm:p-10">
-              <h3 className="eyebrow mb-4 text-metal">
-                <span className="tabular text-accent">0{i + 1}</span> — {b.question}
-              </h3>
-              <p className="text-lg leading-relaxed text-ice/90">{b.answer}</p>
-            </Reveal>
-          ))}
-        </div>
 
         <div className="mt-20">
           <Reveal>
-            <h3 className="text-2xl font-semibold tracking-tight sm:text-3xl">Nossos compromissos</h3>
+            <h3 className="display text-2xl sm:text-3xl">Nossos compromissos</h3>
           </Reveal>
           <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {about.commitments.map((c, i) => (
               <li key={c.title}>
                 <Reveal delay={i * 0.07} className="group h-full border-t border-line pt-6">
-                  <span className="mb-5 grid size-12 place-items-center rounded-2xl border border-line text-accent transition-[transform,border-color] duration-500 ease-out-quint group-hover:-translate-y-1 group-hover:border-accent/60">
+                  <span className="chamfer chamfer-sm mb-5 grid size-12 place-items-center bg-ice/[0.07] text-accent transition-[transform,border-color] duration-500 ease-out-quint group-hover:-translate-y-1 group-hover:border-accent/60">
                     <Icon name={c.icon} className="size-5" />
                   </span>
                   <h4 className="text-lg font-semibold">{c.title}</h4>

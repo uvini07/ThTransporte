@@ -13,6 +13,7 @@ import { Hero } from './components/sections/Hero.tsx'
 import { Operations } from './components/sections/Operations.tsx'
 import { Process } from './components/sections/Process.tsx'
 import { Services } from './components/sections/Services.tsx'
+import { Marquee } from './components/ui/Marquee.tsx'
 import { useHashFlag } from './hooks/useHashFlag.ts'
 import { sectionVisibility as show } from './lib/content.ts'
 
@@ -33,6 +34,7 @@ export default function App() {
       <Header />
       <main id="conteudo" tabIndex={-1} className="outline-none">
         <Hero />
+        <Marquee />
         {show.servicos && <Services />}
         {show.frota && <Fleet />}
         {show.estrutura && <Operations />}

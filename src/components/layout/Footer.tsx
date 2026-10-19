@@ -1,5 +1,6 @@
 import { motion } from 'motion/react'
 import { company } from '../../data/company.ts'
+import { photos } from '../../data/photos.ts'
 import { isDemo } from '../../lib/config.ts'
 import { mailLink, phoneLink, whatsappLink } from '../../lib/contact.ts'
 import { navItems } from '../../lib/content.ts'
@@ -31,16 +32,30 @@ export function Footer({ onOpenPrivacy }: { onOpenPrivacy: () => void }) {
   ].filter((i) => isDemo || i.value)
 
   return (
-    <footer className="relative overflow-hidden border-t border-line">
+    <footer className="relative overflow-hidden">
       {/* Encerramento */}
       <div className="relative">
+        {/* Foto de encerramento com corte diagonal no topo */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 [clip-path:polygon(0_5vw,100%_0,100%_100%,0_100%)]">
+          <img
+            src={photos.sprinterCampo.src}
+            srcSet={photos.sprinterCampo.srcSet}
+            sizes="100vw"
+            alt=""
+            loading="lazy"
+            decoding="async"
+            className="size-full object-cover opacity-35 grayscale-[40%]"
+            style={{ objectPosition: photos.sprinterCampo.position }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/60 to-ink" />
+        </div>
         <div aria-hidden className="pointer-events-none absolute inset-0 bg-grid [mask-image:radial-gradient(60%_80%_at_50%_100%,black,transparent)]" />
         <div aria-hidden className="pointer-events-none absolute bottom-0 left-1/2 h-[30rem] w-[60rem] -translate-x-1/2 translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgb(54_169_232/0.22),transparent)]" />
-        <div className="container-page relative py-24 text-center sm:py-36">
+        <div className="container-page relative py-20 text-center sm:py-28">
           <MaskText
             as="h2"
-            text="Vamos planejar a próxima operação da sua empresa?"
-            className="mx-auto max-w-[18ch] text-[clamp(2.4rem,6vw,5.5rem)] leading-[0.98] font-semibold tracking-[-0.045em]"
+            text="Vamos planejar a *próxima operação* da sua empresa?"
+            className="display mx-auto max-w-[18ch] text-[clamp(1.8rem,3.6vw,3.3rem)] leading-[1.05]"
           />
           <Reveal delay={0.3} className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
             <ButtonLink href="#contato">Solicitar proposta</ButtonLink>
@@ -70,7 +85,7 @@ export function Footer({ onOpenPrivacy }: { onOpenPrivacy: () => void }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${company.name} no ${label}`}
-                    className="grid size-11 place-items-center rounded-full border border-line text-metal transition-colors hover:border-accent hover:text-accent"
+                    className="chamfer chamfer-sm grid size-11 place-items-center bg-ice/[0.07] text-metal transition-colors hover:bg-accent hover:text-ink"
                   >
                     <Icon className="size-5" />
                   </a>

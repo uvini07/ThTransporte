@@ -22,7 +22,7 @@ type Status = { kind: 'idle' } | { kind: 'success' } | { kind: 'error'; message:
 const serviceOptions = [...visibleServices.map((s) => ({ value: s.id, label: s.title })), { value: 'multiplos', label: 'Mais de um serviço / outro' }]
 
 const inputBase =
-  'w-full rounded-xl border bg-ink/60 px-4 py-3.5 text-ice placeholder:text-metal/50 transition-[border-color,box-shadow] duration-300 outline-none focus:border-accent focus:shadow-[0_0_0_4px_rgb(54_169_232/0.15)]'
+  'w-full rounded-[3px] border bg-ink/60 px-4 py-3.5 text-ice placeholder:text-metal/50 transition-[border-color,box-shadow] duration-300 outline-none focus:border-accent focus:shadow-[0_0_0_4px_rgb(54_169_232/0.15)]'
 
 function Field({
   label,
@@ -112,7 +112,7 @@ function ContactChannels() {
       {items.map((item) => {
         const content = (
           <>
-            <span className="grid size-11 shrink-0 place-items-center rounded-full border border-line text-accent transition-colors group-hover:border-accent">{item.icon}</span>
+            <span className="chamfer chamfer-sm grid size-11 shrink-0 place-items-center bg-ice/[0.07] text-accent transition-colors group-hover:bg-accent group-hover:text-ink">{item.icon}</span>
             <span className="min-w-0">
               <span className="eyebrow block text-metal">{item.label}</span>
               <span className="mt-1 block truncate text-lg font-medium">{item.value ?? <Pending />}</span>
@@ -211,11 +211,9 @@ export function Contact() {
       <div className="container-page">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
-            <SectionHeading stacked id="contato-title" index={sectionNumber('contato')} eyebrow="Orçamento corporativo" title="Solicite uma proposta para a sua operação." />
+            <SectionHeading stacked id="contato-title" index={sectionNumber('contato')} eyebrow="Orçamento corporativo" title="Peça uma *proposta.*" />
             <Reveal delay={0.1}>
-              <p className="mt-6 text-lg leading-relaxed text-metal">
-                Quanto mais detalhes sobre volumes, horários e trajetos, mais precisa será a proposta. Os dados são usados apenas para responder à sua solicitação.
-              </p>
+              <p className="mt-5 max-w-sm text-[0.95rem] text-metal">Respondemos com uma proposta sob medida.</p>
             </Reveal>
             <Reveal delay={0.15} className="mt-10">
               <ContactChannels />
@@ -231,9 +229,9 @@ export function Contact() {
           </div>
 
           <Reveal delay={0.1} className="lg:col-span-7">
-            <div className="relative rounded-[1.75rem] border border-line bg-graphite p-6 sm:p-10">
+            <div className="chamfer chamfer-lg relative bg-graphite p-6 sm:p-10">
               {!formEndpoint && (
-                <div role="note" className="mb-8 flex gap-3 rounded-2xl border border-warn/40 bg-warn/10 p-4 text-sm text-ice">
+                <div role="note" className="chamfer chamfer-sm mb-8 flex gap-3 bg-warn/10 p-4 text-sm text-ice">
                   <Info className="mt-0.5 size-5 shrink-0 text-warn" aria-hidden />
                   <p>
                     <strong className="font-semibold">Formulário em modo de demonstração.</strong> A integração de envio ainda não foi configurada, então as
@@ -255,7 +253,7 @@ export function Contact() {
                     className="flex flex-col items-start gap-5 py-10"
                   >
                     <CircleCheck className="size-12 text-accent" aria-hidden />
-                    <h3 className="text-3xl font-semibold tracking-tight">Solicitação enviada.</h3>
+                    <h3 className="display text-3xl">Solicitação enviada.</h3>
                     <p className="max-w-md text-metal">Recebemos seus dados e nossa equipe comercial retornará pelo e-mail ou telefone informado.</p>
                     <Button type="button" variant="secondary" onClick={() => setStatus({ kind: 'idle' })}>
                       Enviar outra solicitação
@@ -272,12 +270,12 @@ export function Contact() {
                     className="flex flex-col items-start gap-5 py-4"
                   >
                     <TriangleAlert className="size-10 text-warn" aria-hidden />
-                    <h3 className="text-2xl font-semibold tracking-tight">Dados validados, mas não enviados.</h3>
+                    <h3 className="display text-2xl">Dados validados, mas não enviados.</h3>
                     <p className="max-w-lg text-metal">
                       O formulário está em modo de demonstração. Nenhuma informação foi transmitida.
                       {hasAnyContactChannel() ? ' Envie o resumo abaixo por um dos canais disponíveis:' : ' Configure VITE_FORM_ENDPOINT para ativar o envio.'}
                     </p>
-                    <pre className="max-h-56 w-full overflow-auto rounded-xl border border-line bg-ink/60 p-4 font-mono text-xs leading-relaxed whitespace-pre-wrap text-metal">
+                    <pre className="max-h-56 w-full overflow-auto rounded-[3px] border border-line bg-ink/60 p-4 font-mono text-xs leading-relaxed whitespace-pre-wrap text-metal">
                       {status.summary}
                     </pre>
                     <div className="flex flex-wrap gap-3">
@@ -435,7 +433,7 @@ export function Contact() {
                     </div>
 
                     {status.kind === 'error' && (
-                      <div role="alert" className="flex gap-3 rounded-2xl border border-[#ff9b8a]/40 bg-[#ff9b8a]/10 p-4 text-sm sm:col-span-2">
+                      <div role="alert" className="chamfer chamfer-sm flex gap-3 bg-[#ff9b8a]/10 p-4 text-sm sm:col-span-2">
                         <TriangleAlert className="mt-0.5 size-5 shrink-0 text-[#ff9b8a]" aria-hidden />
                         {status.message}
                       </div>

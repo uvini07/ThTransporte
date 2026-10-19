@@ -42,7 +42,7 @@ export function Header() {
     >
       <div
         className={`transition-[background-color,border-color,backdrop-filter] duration-500 ${
-          scrolled || menuOpen ? 'border-b border-line/80 bg-ink/80 backdrop-blur-xl' : 'border-b border-transparent'
+          scrolled || menuOpen ? 'border-b border-line/80 bg-ink/80 backdrop-blur-xl' : 'border-b border-transparent bg-gradient-to-b from-ink/85 to-transparent'
         }`}
       >
         <div className="container-page flex h-[4.5rem] items-center justify-between gap-6">
@@ -69,14 +69,14 @@ export function Header() {
                   <a
                     href={`#${item.id}`}
                     aria-current={active === item.id ? 'true' : undefined}
-                    className={`relative block rounded-full px-3.5 py-2 text-sm font-medium whitespace-nowrap transition-colors duration-300 ${
+                    className={`relative block px-3.5 py-2 text-sm font-medium whitespace-nowrap transition-colors duration-300 ${
                       active === item.id ? 'text-ice' : 'text-metal hover:text-ice'
                     }`}
                   >
                     {active === item.id && (
                       <motion.span
                         layoutId="nav-active"
-                        className="absolute inset-0 -z-10 rounded-full border border-line bg-graphite-2"
+                        className="absolute right-3.5 -bottom-0.5 left-3.5 h-[2px] -skew-x-[30deg] bg-accent"
                         transition={{ type: 'spring', stiffness: 380, damping: 34 }}
                       />
                     )}

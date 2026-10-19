@@ -45,7 +45,7 @@ const badgeText: Record<BadgeKind, string> = {
 }
 
 /** Selo de status para conteúdo não confirmado. Só aparece no modo demonstração (exceto "ilustrativa"). */
-export function StatusBadge({ kind, tone = 'dark', className = '' }: { kind: BadgeKind; tone?: Tone; className?: string }) {
+export function StatusBadge({ kind, tone = 'dark', className = '', label }: { kind: BadgeKind; tone?: Tone; className?: string; label?: string }) {
   if (kind !== 'illustrative' && !isDemo) return null
   const styles =
     kind === 'illustrative'
@@ -57,7 +57,7 @@ export function StatusBadge({ kind, tone = 'dark', className = '' }: { kind: Bad
         : 'border-[#9a6a12]/40 bg-[#f0b44c]/15 text-[#7a520a]'
   return (
     <span className={`inline-flex items-center rounded-full border px-2.5 py-1 font-mono text-[0.65rem] font-medium tracking-wider uppercase backdrop-blur-sm ${styles} ${className}`}>
-      {badgeText[kind]}
+      {label ?? badgeText[kind]}
     </span>
   )
 }

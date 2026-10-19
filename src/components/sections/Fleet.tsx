@@ -31,7 +31,7 @@ function Quantity({ value, className = '' }: { value: number | null; className?:
   )
 }
 
-function FleetCard({ category, onOpen }: { category: FleetCategory; onOpen: () => void }) {
+function FleetCard({ category, index, onOpen }: { category: FleetCategory; index: number; onOpen: () => void }) {
   return (
     <motion.li
       layout
@@ -41,34 +41,38 @@ function FleetCard({ category, onOpen }: { category: FleetCategory; onOpen: () =
       transition={{ duration: 0.6, ease: ease.out }}
       className="group relative"
     >
-      <button
-        type="button"
-        onClick={onOpen}
-        aria-haspopup="dialog"
-        className="flex h-full w-full flex-col overflow-hidden rounded-[1.5rem] border border-line bg-graphite text-left transition-[border-color,transform,box-shadow] duration-500 ease-out-quint hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_30px_60px_-30px_rgb(54_169_232/0.35)] [--vehicle-bg:var(--color-graphite)]"
-      >
-        <motion.div layoutId={`fleet-media-${category.id}`} className="w-full">
-          <MediaFrame
-            image={category.image}
-            alt={category.imageAlt}
-            variant={category.visual}
-            className="aspect-[16/10] w-full border-b border-line"
-            innerClassName="transition-transform duration-700 ease-out-quint group-hover:scale-[1.06]"
-          />
-        </motion.div>
-        <div className="flex flex-1 flex-col gap-4 p-6">
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <p className="eyebrow mb-2 text-accent">{groupLabel[category.group]}</p>
-              <h3 className="text-xl font-semibold tracking-tight">{category.name}</h3>
+      {/* O chanfro fica na camada interna para não cortar o contorno de foco do botão */}
+      <button type="button" onClick={onOpen} aria-haspopup="dialog" className="block w-full text-left">
+        <div className="chamfer chamfer-lg relative aspect-[4/5] overflow-hidden bg-graphite transition-transform duration-500 ease-out-quint group-hover:-translate-y-1 [--vehicle-bg:var(--color-graphite)] sm:aspect-[5/6]">
+          <motion.div layoutId={`fleet-media-${category.id}`} className="absolute inset-0">
+            <MediaFrame
+              image={category.image}
+              alt={category.name}
+              variant={category.visual}
+              className="size-full"
+              innerClassName="transition-transform duration-[1.2s] ease-out-quint group-hover:scale-[1.07]"
+              badgeClassName="top-4 left-4"
+            />
+          </motion.div>
+          <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
+          {/* Faixa de acento que corre na base no hover */}
+          <span aria-hidden className="absolute bottom-0 left-0 h-1 w-full origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out-quint group-hover:scale-x-100" />
+
+          <div className="absolute inset-x-0 bottom-0 flex flex-col gap-4 p-6">
+            <div className="flex items-center gap-3">
+              <span className="eyebrow tabular text-metal">{String(index + 1).padStart(2, '0')}</span>
+              <span className="eyebrow text-accent">{groupLabel[category.group]}</span>
             </div>
-            <span className="grid size-10 shrink-0 place-items-center rounded-full border border-line text-metal transition-colors duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-ink">
-              <ArrowUpRight className="size-4" aria-hidden />
-            </span>
-          </div>
-          <div className="mt-auto flex flex-wrap items-end justify-between gap-3 border-t border-line pt-4">
-            <Quantity value={category.quantity} className="text-3xl font-semibold tracking-tight" />
-            {!category.confirmed && <StatusBadge kind="confirm" />}
+            <h3 className="display text-xl leading-[1.05]">{category.name}</h3>
+            <div className="flex flex-wrap items-end justify-between gap-3 border-t border-ice/15 pt-4">
+              <Quantity value={category.quantity} className="display text-2xl" />
+              <span className="flex items-center gap-2">
+                {!category.confirmed && <StatusBadge kind="confirm" />}
+                <span className="chamfer chamfer-sm grid size-10 place-items-center bg-ice/10 text-ice transition-colors duration-300 group-hover:bg-accent group-hover:text-ink">
+                  <ArrowUpRight className="size-4" aria-hidden />
+                </span>
+              </span>
+            </div>
           </div>
           <span className="sr-only">Ver detalhes de {category.name}</span>
         </div>
@@ -80,7 +84,7 @@ function FleetCard({ category, onOpen }: { category: FleetCategory; onOpen: () =
 function Spec({ icon, label, value }: { icon: ReactNode; label: string; value: string | null }) {
   if (!value && !isDemo) return null
   return (
-    <div className="flex items-start gap-3 rounded-2xl border border-line bg-ink/50 p-4">
+    <div className="chamfer chamfer-sm flex items-start gap-3 bg-ink/60 p-4">
       <span className="mt-0.5 text-accent">{icon}</span>
       <div>
         <p className="eyebrow mb-1.5 text-metal">{label}</p>
@@ -92,25 +96,34 @@ function Spec({ icon, label, value }: { icon: ReactNode; label: string; value: s
 
 function FleetDetail({ category, onClose }: { category: FleetCategory; onClose: () => void }) {
   const isCargo = category.group === 'carga'
+  const [current, setCurrent] = useState(category.image)
   return (
     <div className="grid lg:grid-cols-[1.15fr_1fr]">
       <div className="relative bg-ink [--vehicle-bg:var(--color-ink)]">
         <motion.div layoutId={`fleet-media-${category.id}`} className="h-full">
-          <MediaFrame image={category.image} alt={category.imageAlt} variant={category.visual} className="aspect-[16/11] w-full lg:aspect-auto lg:h-full lg:min-h-[32rem]" loading="eager" draw={false} />
+          <MediaFrame
+            image={current}
+            alt={category.name}
+            variant={category.visual}
+            className="aspect-[16/11] w-full lg:aspect-auto lg:h-full lg:min-h-[34rem]"
+            loading="eager"
+            draw={false}
+            sizes="(min-width: 1024px) 55vw, 100vw"
+          />
         </motion.div>
       </div>
       <div className="p-6 sm:p-10">
         <p className="eyebrow mb-3 text-accent">{groupLabel[category.group]}</p>
-        <h3 id="fleet-dialog-title" className="pr-12 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
+        <h3 id="fleet-dialog-title" className="display pr-12 text-3xl sm:text-4xl">
           {category.name}
         </h3>
         {!category.confirmed && <StatusBadge kind="confirm" className="mt-4" />}
         <p className="mt-5 leading-relaxed text-metal">{category.description}</p>
 
         <div className="mt-7 grid gap-3 sm:grid-cols-2">
-          <div className="rounded-2xl border border-line bg-ink/50 p-4 sm:col-span-2">
+          <div className="chamfer chamfer-sm bg-ink/60 p-4 sm:col-span-2">
             <p className="eyebrow mb-2 text-metal">Quantidade disponível</p>
-            <Quantity value={category.quantity} className="text-4xl font-semibold tracking-tight" />
+            <Quantity value={category.quantity} className="display text-4xl" />
           </div>
           {isCargo ? (
             <Spec icon={<Package className="size-4" aria-hidden />} label="Capacidade de carga" value={category.cargoCapacity} />
@@ -136,7 +149,7 @@ function FleetDetail({ category, onClose }: { category: FleetCategory; onClose: 
             <h4 className="eyebrow mb-3 text-metal">Aplicações recomendadas</h4>
             <ul className="flex flex-wrap gap-2">
               {category.applications.map((a) => (
-                <li key={a} className="rounded-full border border-line px-3 py-1.5 text-sm text-ice/90">
+                <li key={a} className="chamfer chamfer-sm bg-ice/[0.07] px-3 py-1.5 text-sm text-ice/90">
                   {a}
                 </li>
               ))}
@@ -150,10 +163,19 @@ function FleetDetail({ category, onClose }: { category: FleetCategory; onClose: 
             <ul className="grid grid-cols-3 gap-2">
               {category.gallery.map((g) => (
                 <li key={g.src}>
-                  <img src={g.src} alt={g.alt} loading="lazy" className="aspect-[4/3] w-full rounded-xl object-cover" />
+                  <button
+                    type="button"
+                    onClick={() => setCurrent(g)}
+                    aria-pressed={current?.src === g.src}
+                    className={`chamfer chamfer-sm relative block w-full overflow-hidden transition-opacity ${current?.src === g.src ? 'opacity-100' : 'opacity-50 hover:opacity-100'}`}
+                  >
+                    {current?.src === g.src && <span aria-hidden className="absolute inset-x-0 bottom-0 z-10 h-1 bg-accent" />}
+                    <img src={g.src} srcSet={g.srcSet} sizes="160px" alt={g.alt} loading="lazy" style={{ objectPosition: g.position }} className="aspect-[4/3] w-full object-cover" />
+                  </button>
                 </li>
               ))}
             </ul>
+            {category.gallery.some((g) => !g.official) && <p className="mt-2 text-xs text-metal">Fotos ilustrativas — não representam necessariamente a frota própria.</p>}
           </div>
         ) : (
           isDemo && (
@@ -194,12 +216,12 @@ export function Fleet() {
           id="frota-title"
           index={sectionNumber('frota')}
           eyebrow="Nossa frota"
-          title="Capacidade para cada tamanho de operação."
+          title="Nossa *frota.*"
           aside={
-            <div className="mt-8 rounded-2xl border border-line bg-ink/60 p-6 lg:mt-0">
+            <div className="chamfer chamfer-lg mt-8 bg-ink/70 p-6 lg:mt-0">
               <p className="eyebrow mb-3 text-metal">Total de veículos</p>
               {fleetTotals.total !== null ? (
-                <p className="text-5xl font-semibold tracking-tight text-ice">
+                <p className="display text-4xl text-ice">
                   <Counter value={fleetTotals.total} />
                 </p>
               ) : (
@@ -225,12 +247,12 @@ export function Fleet() {
                   type="button"
                   aria-pressed={selected}
                   onClick={() => setFilter(g.id)}
-                  className={`relative inline-flex min-h-11 items-center gap-2 rounded-full px-5 text-sm font-medium transition-colors duration-300 ${
+                  className={`relative inline-flex min-h-11 items-center gap-2 px-5 text-sm font-medium transition-colors duration-300 ${
                     selected ? 'text-ink' : 'text-metal hover:text-ice'
                   }`}
                 >
-                  {selected && <motion.span layoutId="fleet-filter" className="absolute inset-0 -z-0 rounded-full bg-accent" transition={{ type: 'spring', stiffness: 400, damping: 34 }} />}
-                  {!selected && <span className="absolute inset-0 rounded-full border border-line" aria-hidden />}
+                  {selected &&  <motion.span layoutId="fleet-filter" className="chamfer chamfer-sm absolute inset-0 -z-0 bg-accent" transition={{ type: 'spring', stiffness: 400, damping: 34 }} />}
+                  {!selected && <span className="chamfer chamfer-sm absolute inset-0 bg-ice/[0.06]" aria-hidden />}
                   <span className="relative">{g.label}</span>
                   <span className={`relative font-mono text-xs ${selected ? 'text-ink/70' : 'text-metal/70'}`}>{count}</span>
                 </button>
@@ -245,7 +267,7 @@ export function Fleet() {
           <motion.ul layout className="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
             <AnimatePresence mode="popLayout" initial={false}>
               {items.map((category) => (
-                <FleetCard key={category.id} category={category} onOpen={() => setOpenId(category.id)} />
+                <FleetCard key={category.id} category={category} index={visibleFleet.indexOf(category)} onOpen={() => setOpenId(category.id)} />
               ))}
             </AnimatePresence>
           </motion.ul>
@@ -256,8 +278,8 @@ export function Fleet() {
         </LayoutGroup>
 
         <Reveal className="mt-12 max-w-2xl text-sm text-metal">
-          Imagens identificadas como ilustrativas representam a categoria do veículo e não a frota real. As fotografias oficiais substituem as ilustrações assim
-          que cadastradas.
+          Imagens identificadas como ilustrativas representam a categoria do veículo e não necessariamente a frota própria. Fotografias oficiais
+          substituem as ilustrações assim que cadastradas.
         </Reveal>
       </div>
     </section>

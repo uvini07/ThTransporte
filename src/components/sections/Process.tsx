@@ -12,8 +12,8 @@ function Marker({ index, progress }: { index: number; progress: MotionValue<numb
   const fill = useTransform(progress, [threshold, threshold + 0.08], [0, 1])
   const idle = useTransform(fill, [0, 1], [1, 0])
   return (
-    <span className="relative grid size-12 place-items-center rounded-full border border-ink/15 bg-ice font-mono text-sm font-semibold">
-      <motion.span style={{ opacity: fill, scale: fill }} className="absolute inset-0 rounded-full bg-accent-strong" />
+    <span className="chamfer chamfer-sm relative grid size-12 shrink-0 place-items-center bg-white font-mono text-sm font-semibold">
+      <motion.span style={{ opacity: fill, scale: fill }} className="absolute inset-0 bg-accent-strong" />
       <motion.span style={{ opacity: idle }} className="relative text-ink">
         0{index + 1}
       </motion.span>
@@ -39,8 +39,8 @@ export function Process() {
           index={sectionNumber('processo')}
           eyebrow="Como funciona a contratação"
           tone="light"
-          title="Da primeira conversa à operação rodando."
-          intro="Um processo objetivo, do diagnóstico da sua operação à implantação."
+          title="Como *funciona.*"
+          intro={undefined}
         />
 
         <ol ref={ref} className="relative mt-16 grid gap-10 md:grid-cols-4 md:gap-6">
@@ -62,18 +62,16 @@ export function Process() {
               )}
               <Marker index={i} progress={progress} />
               <Reveal delay={i * 0.08} className="flex-1">
-                <h3 className="text-xl font-semibold tracking-tight">{step.title}</h3>
-                <p className="mt-3 leading-relaxed text-slate md:mx-auto md:max-w-[24ch]">{step.description}</p>
-              </Reveal>
+                <h3 className="display text-base">{step.title}</h3>
+                              </Reveal>
             </li>
           ))}
         </ol>
 
-        <Reveal className="mt-16 flex flex-col items-start gap-6 rounded-[1.5rem] bg-ink p-8 text-ice sm:flex-row sm:items-center sm:justify-between sm:p-10">
+        <Reveal className="chamfer chamfer-lg mt-16 flex flex-col items-start gap-6 bg-ink p-8 text-ice sm:flex-row sm:items-center sm:justify-between sm:p-10">
           <div>
-            <p className="text-2xl font-semibold tracking-tight">Pronto para dimensionar a sua operação?</p>
-            <p className="mt-2 text-metal">Conte o que você precisa e retornamos com uma proposta.</p>
-          </div>
+            <p className="display text-xl">Pronto para começar?</p>
+                      </div>
           <ButtonLink href="#contato">Iniciar conversa comercial</ButtonLink>
         </Reveal>
       </div>

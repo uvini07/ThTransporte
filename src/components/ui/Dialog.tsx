@@ -83,7 +83,7 @@ export function Dialog({ open, onClose, labelledBy, children, className = '' }: 
             aria-modal="true"
             aria-labelledby={labelledBy}
             tabIndex={-1}
-            className={`relative z-10 max-h-[92svh] w-full overflow-y-auto overscroll-contain rounded-t-3xl border border-line bg-graphite outline-none sm:rounded-3xl ${className}`}
+            className={`chamfer chamfer-lg relative z-10 max-h-[92svh] w-full overflow-y-auto overscroll-contain bg-graphite outline-none ${className}`}
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0, transition: { duration: 0.55, ease: ease.out } }}
             exit={{ opacity: 0, y: 24, transition: { duration: 0.25 } }}
@@ -91,7 +91,7 @@ export function Dialog({ open, onClose, labelledBy, children, className = '' }: 
             <button
               type="button"
               onClick={onClose}
-              className="absolute top-4 right-4 z-20 grid size-11 place-items-center rounded-full border border-line bg-ink/70 text-ice backdrop-blur transition-colors hover:border-accent hover:text-accent"
+              className="absolute top-5 right-10 z-20 grid size-11 place-items-center bg-ink/80 text-ice backdrop-blur transition-colors hover:bg-accent hover:text-ink"
               aria-label="Fechar"
             >
               <X className="size-5" aria-hidden />

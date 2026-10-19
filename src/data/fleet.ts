@@ -1,4 +1,5 @@
 import type { FleetCategory, FleetGroup } from '../types/index.ts'
+import { photos } from './photos.ts'
 
 export const fleetGroups: { id: FleetGroup | 'todos'; label: string }[] = [
   { id: 'todos', label: 'Todos' },
@@ -31,7 +32,6 @@ export const fleetCategories: FleetCategory[] = [
     availability: null,
     visual: 'sedan',
     image: null,
-    imageAlt: 'Carro executivo',
     gallery: [],
   },
   {
@@ -48,7 +48,6 @@ export const fleetCategories: FleetCategory[] = [
     availability: null,
     visual: 'suv',
     image: null,
-    imageAlt: 'SUV executivo',
     gallery: [],
   },
   {
@@ -64,9 +63,24 @@ export const fleetCategories: FleetCategory[] = [
     applications: ['Comitivas de diretoria', 'Roadshows', 'Recepção de delegações'],
     availability: null,
     visual: 'vanExecutiva',
-    image: null,
-    imageAlt: 'Van executiva',
+    image: photos.sprinterCampo,
     gallery: [],
+  },
+  {
+    id: 'minivans',
+    confirmed: false,
+    name: 'Minivans 7 lugares',
+    group: 'passageiros',
+    quantity: null,
+    passengerCapacity: null,
+    cargoCapacity: null,
+    description: 'Compactas e versáteis para equipes pequenas, visitas técnicas e deslocamentos urbanos.',
+    features: ['Climatização', 'Configuração para até 7 ocupantes (conforme modelo)', 'Porta-malas versátil'],
+    applications: ['Equipes pequenas', 'Visitas a clientes', 'Traslados urbanos'],
+    availability: null,
+    visual: 'suv',
+    image: photos.minivanSpin,
+    gallery: [photos.minivanSpin, photos.minivanDoblo],
   },
   {
     id: 'vans',
@@ -81,8 +95,7 @@ export const fleetCategories: FleetCategory[] = [
     applications: ['Rotas de colaboradores', 'Traslados para eventos', 'Visitas técnicas'],
     availability: null,
     visual: 'van',
-    image: null,
-    imageAlt: 'Van de passageiros',
+    image: photos.sprinterTrio,
     gallery: [],
   },
   {
@@ -99,7 +112,6 @@ export const fleetCategories: FleetCategory[] = [
     availability: null,
     visual: 'microOnibus',
     image: null,
-    imageAlt: 'Micro-ônibus',
     gallery: [],
   },
   {
@@ -115,8 +127,7 @@ export const fleetCategories: FleetCategory[] = [
     applications: ['Fretamento contínuo', 'Grandes eventos', 'Viagens intermunicipais'],
     availability: null,
     visual: 'onibus',
-    image: null,
-    imageAlt: 'Ônibus',
+    image: { ...photos.vansOnibus, position: '85% 55%' },
     gallery: [],
   },
   {
@@ -133,7 +144,6 @@ export const fleetCategories: FleetCategory[] = [
     availability: null,
     visual: 'utilitario',
     image: null,
-    imageAlt: 'Veículo utilitário',
     gallery: [],
   },
   {
@@ -150,7 +160,6 @@ export const fleetCategories: FleetCategory[] = [
     availability: null,
     visual: 'caminhao',
     image: null,
-    imageAlt: 'Caminhão de carga',
     gallery: [],
   },
 ]

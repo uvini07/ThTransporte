@@ -7,11 +7,10 @@ export function BrandLogo({ className = '' }: { className?: string }) {
   }
   return (
     <span className={`inline-flex items-center gap-3 ${className}`}>
-      <span aria-hidden className="relative grid size-9 place-items-center rounded-[10px] border border-accent/40 bg-accent/10 font-mono text-[0.8rem] font-semibold tracking-tight text-accent">
+      <span aria-hidden className="chamfer chamfer-sm relative grid size-9 place-items-center bg-accent text-[0.82rem] text-ink display">
         {company.monogram}
-        <span className="absolute -right-0.5 -bottom-0.5 size-2 rounded-full bg-accent" />
       </span>
-      <span className="text-[1.05rem] font-semibold tracking-[-0.02em] whitespace-nowrap">{company.name}</span>
+      <span className="display text-[1.05rem] whitespace-nowrap">{company.name}</span>
     </span>
   )
 }

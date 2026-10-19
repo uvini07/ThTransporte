@@ -1,5 +1,5 @@
 import { clients } from '../data/clients.ts'
-import { company } from '../data/company.ts'
+import { company, heroMedia } from '../data/company.ts'
 import { about } from '../data/content.ts'
 import { differentials } from '../data/differentials.ts'
 import { fleetCategories } from '../data/fleet.ts'
@@ -75,6 +75,7 @@ export function pendingItems(): { group: string; items: string[] }[] {
   push('Empresa', [
     'Confirmar o nome oficial (provisório: ' + company.name + ')',
     !company.logo && 'Logotipo',
+    !heroMedia?.official && 'Foto ou vídeo oficial para o fundo da tela principal',
     !company.slogan && 'Slogan',
     !company.region && 'Região de atuação',
     !company.city && 'Cidade-sede',
@@ -92,13 +93,16 @@ export function pendingItems(): { group: string; items: string[] }[] {
     !import.meta.env.VITE_FORM_ENDPOINT && 'Endpoint do formulário (VITE_FORM_ENDPOINT)',
     !Object.values(company.social).some(Boolean) && 'Redes sociais oficiais',
   ])
-  push('Serviços', services.filter((s) => !s.confirmed).map((s) => `Confirmar: ${s.title}`))
+  push('Serviços', [
+    ...services.filter((s) => !s.confirmed).map((s) => `Confirmar: ${s.title}`),
+    ...services.filter((s) => !s.image?.official).map((s) => `Foto oficial — ${s.title}`),
+  ])
   push(
     'Frota',
     fleetCategories.flatMap((c) => [
       !c.confirmed && `Confirmar se possui: ${c.name}`,
       c.quantity === null && `Quantidade — ${c.name}`,
-      !c.image && `Foto oficial — ${c.name}`,
+      !c.image?.official && `Foto oficial — ${c.name}`,
     ]),
   )
   push('Estrutura operacional', [

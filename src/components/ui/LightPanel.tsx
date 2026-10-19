@@ -2,8 +2,8 @@ import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import { useRef, type ReactNode } from 'react'
 
 /**
- * Seção clara que "desliza" sobre a anterior: cantos arredondados e leve escala
- * que se resolvem conforme entra na tela, conectando visualmente as seções.
+ * Seção clara com corte diagonal no topo (e opcionalmente na base). A inclinação
+ * se ajusta durante a rolagem, conectando visualmente as seções.
  */
 export function LightPanel({
   children,
@@ -16,18 +16,23 @@ export function LightPanel({
   id: string
   labelledBy: string
   className?: string
-  /** Arredonda a base, encerrando o bloco claro antes de uma seção escura. */
+  /** Corta a base na diagonal, encerrando o bloco claro antes de uma seção escura. */
   rounded?: boolean
 }) {
   const ref = useRef<HTMLElement>(null)
   const reduce = useReducedMotion()
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'start 0.25'] })
-  const scale = useTransform(scrollYProgress, [0, 1], reduce ? [1, 1] : [0.94, 1])
-  const radius = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [48, 0])
+  // A diagonal do topo "assenta" conforme a seção entra: começa íngreme e termina suave.
+  const slant = useTransform(scrollYProgress, [0, 1], reduce ? [5, 5] : [12, 5])
+  const clipPath = useTransform(slant, (v) => `polygon(0 ${v}vw, 100% 0, 100% 100%, 0 100%)`)
+  const clipPathRounded = useTransform(slant, (v) => `polygon(0 ${v}vw, 100% 0, 100% calc(100% - 5vw), 0 100%)`)
 
   return (
     <section ref={ref} id={id} aria-labelledby={labelledBy} className={`theme-light relative ${className}`}>
-      <motion.div style={{ scale, borderTopLeftRadius: radius, borderTopRightRadius: radius }} className={`origin-top overflow-hidden bg-ice text-ink [color-scheme:light] ${rounded ? 'rounded-b-[2rem] sm:rounded-b-[3rem]' : ''}`}>
+      <motion.div
+        style={{ clipPath: rounded ? clipPathRounded : clipPath }}
+        className={`bg-ice pt-[5vw] text-ink [color-scheme:light] ${rounded ? 'pb-[5vw]' : ''}`}
+      >
         {children}
       </motion.div>
     </section>

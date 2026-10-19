@@ -44,12 +44,32 @@ export interface CompanyInfo {
   brandColors: Nullable<string[]>
 }
 
+/**
+ * Fotografia exibida no site.
+ * `official: true` somente para fotos reais da frota/operação da empresa.
+ * Fotos de referência (banco de imagens, montadora, internet) devem ficar com `official: false`
+ * e recebem o selo "Foto ilustrativa". Confirme o direito de uso antes de publicar.
+ */
+export interface Photo {
+  src: string
+  /** Ex.: "/fleet/van-640.webp 640w, /fleet/van-1200.webp 1200w" */
+  srcSet?: string
+  alt: string
+  official: boolean
+  /** Enquadramento (CSS object-position). Ex.: "70% 50%". */
+  position?: string
+}
+
 export interface HeroMedia {
-  /** Fotografia ou vídeo oficial da frota. Quando nulo, usa a ilustração. */
+  /** Fundo da tela principal: fotografia ou vídeo curto, mudo e em loop. */
   type: 'image' | 'video'
   src: string
+  srcSet?: string
+  /** Versão leve e desfocada usada como ambiente atrás do conteúdo. */
+  blurSrc?: string
   poster?: string
   alt: string
+  official: boolean
 }
 
 export type ServiceId = 'logistica' | 'corporativo' | 'executivo' | 'eventos' | 'personalizado'
@@ -75,9 +95,8 @@ export interface Service {
   /** Informações que dependem da empresa (modalidades, abrangência etc.). */
   pendingDetails: string[]
   visual: VisualVariant
-  /** Foto oficial opcional. Substitui a ilustração. */
-  image: Nullable<string>
-  imageAlt: string
+  /** Foto do serviço. Quando nula, usa a ilustração técnica do veículo. */
+  image: Nullable<Photo>
 }
 
 export type FleetGroup = 'executivo' | 'passageiros' | 'carga'
@@ -97,11 +116,10 @@ export interface FleetCategory {
   applications: string[]
   availability: Nullable<string>
   visual: VisualVariant
-  /** Foto oficial principal. Quando nula, usa a ilustração (com selo "Imagem ilustrativa"). */
-  image: Nullable<string>
-  imageAlt: string
-  /** Fotos oficiais adicionais exibidas no painel de detalhes. */
-  gallery: { src: string; alt: string }[]
+  /** Foto principal. Quando nula, usa a ilustração técnica (com selo "Imagem ilustrativa"). */
+  image: Nullable<Photo>
+  /** Fotos adicionais exibidas no painel de detalhes. */
+  gallery: Photo[]
 }
 
 export interface TeamData {
