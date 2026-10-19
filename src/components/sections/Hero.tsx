@@ -70,8 +70,8 @@ export function Hero() {
       ref={ref}
       id="inicio"
       aria-labelledby="hero-title"
-      style={{ "--color-ink": "#0a3a63", "--color-ice": "#ffffff", "--color-metal": "#c7d8e8", "--color-line": "#2b5a82", "--color-accent": "#5cc2ff" } as React.CSSProperties}
-      className="relative isolate overflow-hidden text-ice [&_a.text-white]:text-[#0a3a63] [clip-path:polygon(0_0,100%_0,100%_calc(100%-5vw),0_100%)]"
+      style={{ "--color-ink": "#0e1a2b", "--color-ice": "#faf8f5", "--color-metal": "#a9b3c1", "--color-line": "#24344a", "--color-accent": "#ff7a3d" } as React.CSSProperties}
+      className="relative isolate overflow-hidden text-ice [clip-path:polygon(0_0,100%_0,100%_calc(100%-5vw),0_100%)]"
     >
       {/* Ambiente: a própria rodovia, desfocada e escurecida, preenche toda a tela */}
       <div aria-hidden className="absolute inset-0 -z-20">
@@ -124,7 +124,7 @@ export function Hero() {
       >
         <motion.p {...enter(0.5)} className="eyebrow mb-7 flex flex-wrap items-center gap-x-3 gap-y-2 text-metal">
           <span className="inline-flex items-center gap-2 text-accent">
-            <span aria-hidden className="size-1.5 bg-accent shadow-[0_0_12px_2px_rgb(54_169_232/0.7)]" />
+            <span aria-hidden className="size-1.5 bg-accent shadow-[0_0_12px_2px_rgb(240_90_26/0.7)]" />
             {heroCopy.eyebrow}
           </span>
           {company.region && <span>· {company.region}</span>}
@@ -150,7 +150,7 @@ export function Hero() {
             {heroCopy.subheadline}
           </motion.p>
           <motion.div {...enter(1.1)} className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href="#contato">Pedir orçamento grátis</ButtonLink>
+            <ButtonLink href="#contato" className="[&]:text-[#0e1a2b]">Pedir orçamento grátis</ButtonLink>
             <ButtonLink href="#frota" variant="secondary">
               Conheça nossa frota
             </ButtonLink>

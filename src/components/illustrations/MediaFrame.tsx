@@ -65,8 +65,8 @@ export function MediaFrame({
             style={{
               background:
                 tone === 'dark'
-                  ? 'radial-gradient(60% 55% at 50% 60%, rgb(54 169 232 / 0.14), transparent 70%)'
-                  : 'radial-gradient(60% 55% at 50% 60%, rgb(54 169 232 / 0.18), transparent 70%)',
+                  ? 'radial-gradient(60% 55% at 50% 60%, rgb(240 90 26 / 0.14), transparent 70%)'
+                  : 'radial-gradient(60% 55% at 50% 60%, rgb(240 90 26 / 0.18), transparent 70%)',
             }}
           />
           <div className={`absolute inset-0 flex items-center justify-center p-[6%] ${innerClassName}`}>

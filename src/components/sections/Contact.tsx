@@ -22,7 +22,7 @@ type Status = { kind: 'idle' } | { kind: 'success' } | { kind: 'error'; message:
 const serviceOptions = [...visibleServices.map((s) => ({ value: s.id, label: s.title })), { value: 'multiplos', label: 'Mais de um serviço / outro' }]
 
 const inputBase =
-  'w-full rounded-[3px] border bg-ink/60 px-4 py-3.5 text-ice placeholder:text-metal/50 transition-[border-color,box-shadow] duration-300 outline-none focus:border-accent focus:shadow-[0_0_0_4px_rgb(54_169_232/0.15)]'
+  'w-full rounded-[3px] border bg-ink/60 px-4 py-3.5 text-ice placeholder:text-metal/50 transition-[border-color,box-shadow] duration-300 outline-none focus:border-accent focus:shadow-[0_0_0_4px_rgb(240_90_26/0.15)]'
 
 function Field({
   label,
@@ -411,7 +411,7 @@ export function Contact() {
                       <label className="flex cursor-pointer items-start gap-3 text-sm text-metal">
                         <input
                           type="checkbox"
-                          className="mt-0.5 size-5 shrink-0 cursor-pointer accent-[#36a9e8]"
+                          className="mt-0.5 size-5 shrink-0 cursor-pointer accent-[#f05a1a]"
                           aria-invalid={errors.consent ? true : undefined}
                           aria-describedby={errors.consent ? 'consent-error' : undefined}
                           {...register('consent')}

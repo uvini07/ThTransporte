@@ -50,7 +50,7 @@ export function Footer({ onOpenPrivacy }: { onOpenPrivacy: () => void }) {
           <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/60 to-ink" />
         </div>
         <div aria-hidden className="pointer-events-none absolute inset-0 bg-grid [mask-image:radial-gradient(60%_80%_at_50%_100%,black,transparent)]" />
-        <div aria-hidden className="pointer-events-none absolute bottom-0 left-1/2 h-[30rem] w-[60rem] -translate-x-1/2 translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgb(54_169_232/0.22),transparent)]" />
+        <div aria-hidden className="pointer-events-none absolute bottom-0 left-1/2 h-[30rem] w-[60rem] -translate-x-1/2 translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgb(240_90_26/0.22),transparent)]" />
         <div className="container-page relative py-20 text-center sm:py-28">
           <MaskText
             as="h2"

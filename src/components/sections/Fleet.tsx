@@ -210,7 +210,7 @@ export function Fleet() {
 
   return (
     <section id="frota" aria-labelledby="frota-title" className="relative overflow-hidden border-t border-line bg-graphite/40 py-24 sm:py-32">
-      <div aria-hidden className="pointer-events-none absolute top-0 right-0 h-[40rem] w-[40rem] translate-x-1/3 -translate-y-1/3 rounded-full bg-[radial-gradient(closest-side,rgb(54_169_232/0.1),transparent)]" />
+      <div aria-hidden className="pointer-events-none absolute top-0 right-0 h-[40rem] w-[40rem] translate-x-1/3 -translate-y-1/3 rounded-full bg-[radial-gradient(closest-side,rgb(240_90_26/0.1),transparent)]" />
       <div className="container-page relative">
         <SectionHeading
           id="frota-title"

@@ -13,11 +13,11 @@ function Marker({ index, progress }: { index: number; progress: MotionValue<numb
   const idle = useTransform(fill, [0, 1], [1, 0])
   return (
     <span className="chamfer chamfer-sm relative grid size-12 shrink-0 place-items-center bg-ink font-mono text-sm font-semibold">
-      <motion.span style={{ opacity: fill, scale: fill }} className="absolute inset-0 bg-accent-strong" />
+      <motion.span style={{ opacity: fill, scale: fill }} className="absolute inset-0 bg-accent" />
       <motion.span style={{ opacity: idle }} className="relative text-ink">
         0{index + 1}
       </motion.span>
-      <motion.span style={{ opacity: fill }} className="absolute text-white">
+      <motion.span style={{ opacity: fill }} className="absolute text-ice">
         0{index + 1}
       </motion.span>
     </span>
@@ -68,11 +68,11 @@ export function Process() {
           ))}
         </ol>
 
-        <Reveal className="chamfer chamfer-lg mt-16 flex flex-col items-start gap-6 bg-accent p-8 text-white sm:flex-row sm:items-center sm:justify-between sm:p-10">
+        <Reveal className="chamfer chamfer-lg mt-16 flex flex-col items-start gap-6 bg-ice p-8 text-ink sm:flex-row sm:items-center sm:justify-between sm:p-10">
           <div>
             <p className="display text-xl">Receba sua proposta em poucos passos.</p>
                       </div>
-          <ButtonLink href="#contato" variant="secondary" className="!text-accent [&>span:first-child]:!bg-white">Pedir orçamento</ButtonLink>
+          <ButtonLink href="#contato" variant="primary" className="">Pedir orçamento</ButtonLink>
         </Reveal>
       </div>
     </LightPanel>

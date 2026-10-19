@@ -20,9 +20,9 @@ export function RouteField({ className = '' }: { className?: string }) {
     <svg viewBox="0 0 1240 560" preserveAspectRatio="xMidYMid slice" className={className} aria-hidden>
       <defs>
         <linearGradient id="route-fade" x1="0" x2="1">
-          <stop offset="0" stopColor="#36a9e8" stopOpacity="0" />
-          <stop offset="0.35" stopColor="#36a9e8" stopOpacity="0.55" />
-          <stop offset="1" stopColor="#36a9e8" stopOpacity="0.05" />
+          <stop offset="0" stopColor="#f05a1a" stopOpacity="0" />
+          <stop offset="0.35" stopColor="#f05a1a" stopOpacity="0.55" />
+          <stop offset="1" stopColor="#f05a1a" stopOpacity="0.05" />
         </linearGradient>
       </defs>
       {routes.map((d, i) => (
@@ -47,8 +47,8 @@ export function RouteField({ className = '' }: { className?: string }) {
           transition={{ duration: 0.6, delay: 1.4 + i * 0.12 }}
           style={{ transformOrigin: `${x}px ${y}px`, transformBox: 'view-box' }}
         >
-          <circle cx={x} cy={y} r="10" fill="none" stroke="#36a9e8" strokeOpacity="0.35" className="origin-center animate-pulse-ring [transform-box:fill-box]" style={{ animationDelay: `${i * 0.5}s` }} />
-          <circle cx={x} cy={y} r="3" fill="#36a9e8" />
+          <circle cx={x} cy={y} r="10" fill="none" stroke="#f05a1a" strokeOpacity="0.35" className="origin-center animate-pulse-ring [transform-box:fill-box]" style={{ animationDelay: `${i * 0.5}s` }} />
+          <circle cx={x} cy={y} r="3" fill="#f05a1a" />
         </motion.g>
       ))}
     </svg>

@@ -9,17 +9,23 @@
   --font-display: 'Archivo Variable', 'Archivo', 'Manrope Variable', ui-sans-serif, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  --color-ink: #ffffff;
-  --color-graphite: #f3f5f8;
-  --color-graphite-2: #e9edf2;
-  --color-line: #e2e7ed;
-  --color-ice: #0b1118;
-  --color-ice-2: #e9edf2;
-  --color-metal: #5b6673;
-  --color-slate: #4a5563;
-  --color-accent: #0b7fc7;
-  --color-accent-strong: #0e6fa8;
-  --color-accent-soft: #36a9e81f;
+  /*
+   * Paleta 60-30-10:
+   *  60% branco quente (fundo) · 30% azul-marinho (texto, tela inicial) · 10% laranja-sinal (ação).
+   * Referências: contraste sóbrio de Uber/Mercedes + branco quente com acento único de Airbnb/Stripe.
+   * O laranja é complementar ao azul e remete à sinalização viária. Contrastes verificados (WCAG AA).
+   */
+  --color-ink: #faf8f5; /* fundo — branco quente */
+  --color-graphite: #f2eee8; /* superfícies */
+  --color-graphite-2: #e8e2d9;
+  --color-line: #e3ddd3;
+  --color-ice: #0e1a2b; /* texto principal — azul-marinho */
+  --color-ice-2: #e8e2d9;
+  --color-metal: #5a6472; /* texto secundário */
+  --color-slate: #5a6472;
+  --color-accent: #f05a1a; /* laranja-sinal: botões e destaques */
+  --color-accent-strong: #c2410c;
+  --color-accent-soft: #f05a1a1f;
   --color-warn: #a86a0c;
 
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);

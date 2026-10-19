@@ -165,13 +165,13 @@ export function Vehicle({ variant, className = '', annotated = true, draw = true
     <svg viewBox={`0 0 ${W} 200`} className={className} role={title ? 'img' : undefined} aria-hidden={title ? undefined : true} aria-label={title}>
       <defs>
         <linearGradient id={`body-${uid}`} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="var(--vehicle-body-top, #2a333e)" />
-          <stop offset="1" stopColor="var(--vehicle-body-bottom, #141a21)" />
+          <stop offset="0" stopColor="var(--vehicle-body-top, #22324a)" />
+          <stop offset="1" stopColor="var(--vehicle-body-bottom, #0e1a2b)" />
         </linearGradient>
         <linearGradient id={`glass-${uid}`} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#36a9e8" stopOpacity="0.35" />
+          <stop offset="0" stopColor="#f05a1a" stopOpacity="0.35" />
           <stop offset="0.55" stopColor="#0b1118" stopOpacity="0.85" />
-          <stop offset="1" stopColor="#36a9e8" stopOpacity="0.18" />
+          <stop offset="1" stopColor="#f05a1a" stopOpacity="0.18" />
         </linearGradient>
         <radialGradient id={`shadow-${uid}`} cx="0.5" cy="0.5" r="0.5">
           <stop offset="0" stopColor="#000" stopOpacity="0.55" />
@@ -192,11 +192,11 @@ export function Vehicle({ variant, className = '', annotated = true, draw = true
           <path key={d} d={d} fill="none" stroke="var(--vehicle-line, #aab4c0)" strokeOpacity="0.35" strokeWidth="1" />
         ))}
         {s.lights.map((d) => (
-          <path key={d} d={d} fill="#36a9e8" opacity="0.9" />
+          <path key={d} d={d} fill="#f05a1a" opacity="0.9" />
         ))}
       </motion.g>
 
-      <motion.path d={s.stripe} stroke="#36a9e8" strokeWidth="2" strokeLinecap="round" {...pathAnim} />
+      <motion.path d={s.stripe} stroke="#f05a1a" strokeWidth="2" strokeLinecap="round" {...pathAnim} />
 
       {s.wheels.map((cx) => (
         <g key={cx}>
